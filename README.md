@@ -1,24 +1,29 @@
-![EVMole](./.github/logo.svg)
+[update-readmes]   Mode: rewrite — migrating to template structure...
+# evmole
 
-[![try it online](https://img.shields.io/badge/Try_It_Online-evmole.xyz-brightgreen)](https://evmole.xyz/)
-[![npm](https://img.shields.io/npm/v/evmole)](https://www.npmjs.com/package/evmole)
-[![Crates.io](https://img.shields.io/crates/v/evmole?color=e9b44f)](https://crates.io/crates/evmole)
-[![PyPI](https://img.shields.io/pypi/v/evmole?color=006dad)](https://pypi.org/project/evmole)
-[![Go](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/cdump/evmole/go)
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/evmole)
 
-EVMole is a powerful library that extracts information from Ethereum Virtual Machine (EVM) bytecode, including [function selectors](https://docs.soliditylang.org/en/latest/abi-spec.html#function-selector), arguments, [state mutability](https://docs.soliditylang.org/en/latest/contracts.html#state-mutability), and storage layout, even for unverified contracts.
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
+## Architecture
 
-## Key Features
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
 
-- Multi-language support: Available as [JavaScript](#javascript), [Rust](#rust), [Python](#python), and [Go](#go) libraries.
-- High accuracy and performance: [Outperforms](#benchmark) existing tools.
-- Broad compatibility: Tested with both Solidity and Vyper compiled contracts.
-- Lightweight: Clean codebase with minimal external dependencies.
-- Unverified contract analysis: Extracts information even from unverified bytecode.
+## Install
 
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
+
+```bash
+git clone https://github.com/Interested-Deving-1896/evmole.git
+cd evmole
+```
 
 ## Usage
+
 ### JavaScript
 [API documentation](./javascript/#api) and [usage examples](./javascript#usage) (node, vite, webpack, parcel, esbuild)
 ```sh
@@ -137,344 +142,50 @@ $ cast selectors --resolve $(cast code 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc
 ...
 ```
 
-## Benchmark
+## Configuration
 
-### function selectors
-<i>FP/FN</i> - [False Positive/False Negative](https://en.wikipedia.org/wiki/False_positives_and_false_negatives) errors; <b>smaller is better</b>
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
 
-<table>
- <tr>
-  <td>Dataset</td>
-  <td></td>
-  <td><b><i>evmole</i><b> <a href="benchmark/providers/evmole-rs/"><b><i>rs</i></b></a> · <a href="benchmark/providers/evmole-js/"><b><i>js</i></b></a> · <a href="benchmark/providers/evmole-py/"><b><i>py</i></b></a> · <a href="benchmark/providers/evmole-go/"><b><i>go</i></b></a></td>
-  <td><a href="benchmark/providers/whatsabi/"><b><i>whatsabi</i></b></a></td>
-  <td><a href="benchmark/providers/sevm/"><b><i>sevm</i></b></a></td>
-  <td><a href="benchmark/providers/evm-hound-rs/"><b><i>evmhound</i></b></a></td>
-  <td><a href="benchmark/providers/heimdall-rs/"><b><i>heimdall</i></b></a></td>
- </tr>
- <tr>
-  <td rowspan="5"><b>largest1k</b><br><sub>1000<br>addresses<br><br>24427<br>functions</sub></td>
-  <td><i>FP <sub>addrs</sub></i></td>
-  <td>1 🥈</td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>75</td>
-  <td>18</td>
- </tr>
- <tr>
-  <td><i>FN <sub>addrs</sub></i></td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>40</td>
-  <td>103</td>
- </tr>
- <tr>
-  <td><i>FP <sub>funcs</sub></i></td>
-  <td>192 🥈</td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>720</td>
-  <td>600</td>
- </tr>
- <tr>
-  <td><i>FN <sub>funcs</sub></i></td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>0 🥇</td>
-  <td>191</td>
-  <td>114</td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>18ms · 0.3s · 21ms · 0.1s</td>
-  <td>2.3s</td>
-  <td>30s<sup>(*)</sup></td>
-  <td>56ms</td>
-  <td>371s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="7"></td></tr>
- <tr>
-  <td rowspan="5"><b>random50k</b><br><sub>50000<br>addresses<br><br>1171102<br>functions</sub></td>
-  <td><i>FP <sub>addrs</sub></i></td>
-  <td>1 🥇</td>
-  <td>43</td>
-  <td>1</td>
-  <td>693</td>
-  <td>3</td>
- </tr>
- <tr>
-  <td><i>FN <sub>addrs</sub></i></td>
-  <td>9 🥇</td>
-  <td>11</td>
-  <td>10</td>
-  <td>2903</td>
-  <td>4669</td>
- </tr>
- <tr>
-  <td><i>FP <sub>funcs</sub></i></td>
-  <td>3 🥇</td>
-  <td>51</td>
-  <td>3</td>
-  <td>10798</td>
-  <td>29</td>
- </tr>
- <tr>
-  <td><i>FN <sub>funcs</sub></i></td>
-  <td>10 🥇</td>
-  <td>12</td>
-  <td>11</td>
-  <td>3538</td>
-  <td>4943</td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>0.3s · 2.6s · 0.5s · 5.7s</td>
-  <td>30s</td>
-  <td>440s<sup>(*)</sup></td>
-  <td>1.6s</td>
-  <td>8684s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="7"></td></tr>
- <tr>
-  <td rowspan="5"><b>vyper</b><br><sub>780<br>addresses<br><br>21244<br>functions</sub></td>
-  <td><i>FP <sub>addrs</sub></i></td>
-  <td>0 🥇</td>
-  <td>30</td>
-  <td>0</td>
-  <td>19</td>
-  <td>0</td>
- </tr>
- <tr>
-  <td><i>FN <sub>addrs</sub></i></td>
-  <td>0 🥇</td>
-  <td>780</td>
-  <td>0</td>
-  <td>300</td>
-  <td>780</td>
- </tr>
- <tr>
-  <td><i>FP <sub>funcs</sub></i></td>
-  <td>0 🥇</td>
-  <td>30</td>
-  <td>0</td>
-  <td>19</td>
-  <td>0</td>
- </tr>
- <tr>
-  <td><i>FN <sub>funcs</sub></i></td>
-  <td>0 🥇</td>
-  <td>21244</td>
-  <td>0</td>
-  <td>8273</td>
-  <td>21244</td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>10ms · 0.2s · 10ms · 85ms</td>
-  <td>2.0s</td>
-  <td>34s<sup>(*)</sup></td>
-  <td>26ms</td>
-  <td>28s<sup>(*)</sup></td>
- </tr>
-</table>
+## CI
 
-### function arguments
-<i>Errors</i> - when at least 1 argument is incorrect: `(uint256,string)` ≠ `(uint256,bytes)`
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
 
-<table>
- <tr>
-  <td>Dataset</td>
-  <td></td>
-  <td><b><i>evmole</i><b> <a href="benchmark/providers/evmole-rs/"><b><i>rs</i></b></a> · <a href="benchmark/providers/evmole-js/"><b><i>js</i></b></a> · <a href="benchmark/providers/evmole-py/"><b><i>py</i></b></a> · <a href="benchmark/providers/evmole-go/"><b><i>go</i></b></a></td>
-  <td><a href="benchmark/providers/heimdall-rs/"><b><i>heimdall</i></b></a></td>
- </tr>
- <tr>
-  <td rowspan="2"><b>largest1k</b><br><sub>24427<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>14.1% 🥇<br><sub>3447</sub></td>
-  <td>31.1%<br><sub>7603</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>0.5s · 1.1s · 0.5s · 2.1s</td>
-  <td>370s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="4"></td></tr>
- <tr>
-  <td rowspan="2"><b>random50k</b><br><sub>1171102<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>4.8% 🥇<br><sub>56464</sub></td>
-  <td>19.4%<br><sub>227077</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>13s · 26s · 15s · 44s</td>
-  <td>8579s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="4"></td></tr>
- <tr>
-  <td rowspan="2"><b>vyper</b><br><sub>21244<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>48.4% 🥇<br><sub>10289</sub></td>
-  <td>100.0%<br><sub>21244</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>0.5s · 1.3s · 0.5s · 1.4s</td>
-  <td>29s<sup>(*)</sup></td>
- </tr>
-</table>
+## Mirror chain
 
-### function state mutability
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/evmole`](https://github.com/Interested-Deving-1896/evmole) and mirrored through:
 
-<i>Errors</i> - Results are not equal (treating `view` and `pure` as equivalent to `nonpayable`)
+```
+Interested-Deving-1896/evmole  ──►  OpenOS-Project-OSP/evmole  ──►  OpenOS-Project-Ecosystem-OOC/evmole
+```
 
-<i>Errors strict</i> - Results are strictly unequal (`nonpayable` ≠ `view`). Some ABIs mark `pure`/`view` functions as `nonpayable`, so not all strict errors indicate real issues.
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-<table>
- <tr>
-  <td>Dataset</td>
-  <td></td>
-  <td><b><i>evmole</i><b> <a href="benchmark/providers/evmole-rs/"><b><i>rs</i></b></a> · <a href="benchmark/providers/evmole-js/"><b><i>js</i></b></a> · <a href="benchmark/providers/evmole-py/"><b><i>py</i></b></a> · <a href="benchmark/providers/evmole-go/"><b><i>go</i></b></a></td>
-  <td><a href="benchmark/providers/whatsabi/"><b><i>whatsabi</i></b></a></td>
-  <td><a href="benchmark/providers/sevm/"><b><i>sevm</i></b></a></td>
-  <td><a href="benchmark/providers/heimdall-rs/"><b><i>heimdall</i></b></a></td>
- </tr>
- <tr>
-  <td rowspan="3"><b>largest1k</b><br><sub>24427<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>0.0% 🥇<br><sub>0</sub></td>
-  <td>68.1%<br><sub>16623</sub></td>
-  <td>2.1%<br><sub>501</sub></td>
-  <td>25.7%<br><sub>6268</sub></td>
- </tr>
- <tr>
-  <td><i>Errors strict</i></td>
-  <td>18.6% 🥇<br><sub>4549</sub></td>
-  <td>79.4%<br><sub>19393</sub></td>
-  <td>59.0%<br><sub>14417</sub></td>
-  <td>54.8%<br><sub>13386</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>8.0s · 8.2s · 8.5s · 18s</td>
-  <td>2.5s</td>
-  <td>27s<sup>(*)</sup></td>
-  <td>371s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="6"></td></tr>
- <tr>
-  <td rowspan="3"><b>random50k</b><br><sub>1160861<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>0.0% 🥇<br><sub>44</sub></td>
-  <td>30.2%<br><sub>351060</sub></td>
-  <td>0.3%<br><sub>3370</sub></td>
-  <td>11.5%<br><sub>133471</sub></td>
- </tr>
- <tr>
-  <td><i>Errors strict</i></td>
-  <td>6.8% 🥇<br><sub>78359</sub></td>
-  <td>58.2%<br><sub>675111</sub></td>
-  <td>55.7%<br><sub>646831</sub></td>
-  <td>27.6%<br><sub>320264</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>157s · 160s · 171s · 354s</td>
-  <td>51s</td>
-  <td>2261s<sup>(*)</sup></td>
-  <td>8334s<sup>(*)</sup></td>
- </tr>
- <tr><td colspan="6"></td></tr>
- <tr>
-  <td rowspan="3"><b>vyper</b><br><sub>21166<br>functions</sub></td>
-  <td><i>Errors</i></td>
-  <td>0.5% 🥇<br><sub>110</sub></td>
-  <td>100.0%<br><sub>21166</sub></td>
-  <td>76.3%<br><sub>16150</sub></td>
-  <td>100.0%<br><sub>21166</sub></td>
- </tr>
- <tr>
-  <td><i>Errors strict</i></td>
-  <td>4.0% 🥇<br><sub>850</sub></td>
-  <td>100.0%<br><sub>21166</sub></td>
-  <td>90.2%<br><sub>19092</sub></td>
-  <td>100.0%<br><sub>21166</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>8.4s · 7.6s · 8.4s · 17s</td>
-  <td>1.8s</td>
-  <td>35s<sup>(*)</sup></td>
-  <td>29s<sup>(*)</sup></td>
- </tr>
-</table>
+## Contributors
 
-### Control Flow Graph
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
 
-<i>False Negatives</i> - Valid blocks possibly incorrectly marked unreachable by CFG analysis. Lower count usually indicates better precision.
+## Origins
 
-<table>
- <tr>
-  <td></td>
-  <td><a href="benchmark/providers/evmole-rs"><b><i>evmole</i></b></a></td>
-  <td><a href="benchmark/providers/ethersolve"><b><i>ethersolve</i></b></a></td>
-  <td><a href="benchmark/providers/evm-cfg"><b><i>evm-cfg</i></b></a></td>
-  <td><a href="benchmark/providers/sevm"><b><i>sevm</i></b></a></td>
-  <td><a href="benchmark/providers/heimdall-rs"><b><i>heimdall-rs</i></b></a></td>
-  <td><a href="benchmark/providers/evm-cfg-builder"><b><i>evm-cfg-builder</i></b></a></td>
- </tr>
- <tr>
-  <td><i>Basic Blocks</i></td>
-  <td>97.0% 🥇<br><sub>661959</sub></td>
-  <td>93.8%<br><sub>640383</sub></td>
-  <td>63.0%<br><sub>430011</sub></td>
-  <td>41.4%<br><sub>282599</sub></td>
-  <td>31.9%<br><sub>217924</sub></td>
-  <td>21.7%<br><sub>148166</sub></td>
- </tr>
- <tr>
-  <td><i>False Negatives</i></td>
-  <td>3.0% 🥇<br><sub>20482</sub></td>
-  <td>6.2%<br><sub>42058</sub></td>
-  <td>37.0%<br><sub>252430</sub></td>
-  <td>58.6%<br><sub>399842</sub></td>
-  <td>68.1%<br><sub>464517</sub></td>
-  <td>78.3%<br><sub>534275</sub></td>
- </tr>
- <tr>
-  <td><i>Time</i></td>
-  <td>19s</td>
-  <td>643s</td>
-  <td>49s</td>
-  <td>28s</td>
-  <td>206s</td>
-  <td>158s</td>
- </tr>
-</table>
+<!-- AI:start:origins -->
+_Original project — no upstream fork._
+<!-- AI:end:origins -->
 
-dataset largest1k, 1000 contracts, 682,441 blocks
+## Resources
 
-### notes
-
-See [benchmark/README.md](./benchmark/) for the methodology and commands to reproduce these results
-
-<i>versions: evmole v0.8.2; <a href="https://github.com/shazow/whatsabi">whatsabi</a> v0.25.0; <a href="https://github.com/acuarica/evm">sevm</a> v0.7.4; <a href="https://github.com/g00dv1n/evm-hound-rs">evm-hound-rs</a> v0.1.4; <a href="https://github.com/Jon-Becker/heimdall-rs">heimdall-rs</a> v0.8.6</i>
-
-<sup>(*)</sup>: <b>sevm</b> and <b>heimdall-rs</b> are full decompilers, not limited to extracting function selectors
-
-## How it works
-
-EVMole uses symbolic execution with a custom EVM implementation to trace how CALLDATA flows through the bytecode:
-
-This approach is more accurate than static pattern matching because it follows the actual execution paths the EVM would take, correctly handling complex dispatchers, proxy patterns, and compiler-specific optimizations from both Solidity and Vyper.
-
-## Talks
-- [EVMole: function selectors and arguments from bytecode](https://www.youtube.com/watch?v=l0udabGej54) - BlockSplit 2024
-- [EVMole: function selectors and arguments from bytecode](https://ethcc.io/archives/evmole-function-selectors-and-arguments-from-bytecode) - EthCC 2024
-- [Reconstructing Control Flow Graphs from EVM Bytecode](https://www.youtube.com/watch?v=1Xd6PhEHMHM) - ETHTaipei 2025
-- [Reconstructing Control Flow Graphs from EVM Bytecode: Faster, Better, Stronger](https://www.youtube.com/watch?v=UL6-3EZbv3E) - EthCC 2025
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
 
 ## License
-MIT
+
+<!-- AI:start:license -->
+[MIT](https://github.com/Interested-Deving-1896/evmole/blob/master/LICENSE) © 2026 [Interested-Deving-1896](https://github.com/Interested-Deving-1896)
+<!-- AI:end:license -->
