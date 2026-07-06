@@ -4,7 +4,7 @@
 [![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/evmole)
 
 <!-- AI:start:what-it-does -->
-_Description pending._
+This project analyzes Ethereum Virtual Machine (EVM) bytecode to extract function selectors, arguments, state mutability, and storage layout. It supports working with unverified smart contracts, enabling developers, auditors, and researchers to inspect and understand contract behavior without requiring source code.
 <!-- AI:end:what-it-does -->
 
 ## Architecture
